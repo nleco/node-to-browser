@@ -18,6 +18,7 @@ debug.enable('tbr:*');
 function buildCSS() {
     fs.readdir(PATH_IN, (err, files) => {
         if (_.isArray(files)) {
+            debug_css(file);
             files.forEach((file) => {
                 if (files.match(/.*[.]sass$/)) {
                     src(files).pipe(sass().on('error', sass.logError)).pipe(plumber()).pipe(dest(PATH_OUT));
@@ -34,6 +35,7 @@ function buildCSS() {
 function buildJS() {
     fs.readdir(PATH_IN, (err, files) => {
         if (_.isArray(files)) {
+            debug_js(file);
             files.forEach((file) => {
                 if (files.match(/.*[.]js$/)) {
                     debug_js(file);
